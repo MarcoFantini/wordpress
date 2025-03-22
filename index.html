@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Piano Settimanale Marco</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: #f4f4f8;
+        margin: 0;
+        padding: 20px;
+        color: #333;
+      }
+
+      h1 {
+        text-align: center;
+        margin-bottom: 30px;
+        color: #2c3e50;
+      }
+
+      .week {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+      }
+
+      .day-card {
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        transition: 0.3s ease;
+      }
+
+      .day-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+      }
+
+      h2 {
+        margin-top: 0;
+        color: #34495e;
+      }
+
+      ul {
+        padding-left: 0;
+        list-style: none;
+      }
+
+      li {
+        margin-bottom: 8px;
+        display: flex;
+        align-items: center;
+      }
+
+      input[type="checkbox"] {
+        margin-right: 10px;
+      }
+
+      .note {
+        margin-top: 30px;
+        padding: 15px;
+        background: #dff9fb;
+        border-left: 5px solid #00a8ff;
+        border-radius: 8px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Piano Settimanale fino a Luglio</h1>
+    <div class="week">
+      <div class="day-card">
+        <h2>Lunedì</h2>
+        <ul>
+          <li><input type="checkbox" id="lun1" />08:00 - Lezione di Fisica</li>
+          <li><input type="checkbox" id="lun2" />Lavoro da casa</li>
+          <li><input type="checkbox" id="lun3" />Studio serale di Fisica</li>
+        </ul>
+      </div>
+      <div class="day-card">
+        <h2>Martedì</h2>
+        <ul>
+          <li><input type="checkbox" id="mar1" />08:00 - Lezione di Fisica</li>
+          <li>
+            <input type="checkbox" id="mar2" />Lavoro da casa o in ufficio
+          </li>
+          <li>
+            <input type="checkbox" id="mar3" />Studio serale o post-ufficio fino
+            alle 19:30/20
+          </li>
+        </ul>
+      </div>
+      <div class="day-card">
+        <h2>Mercoledì</h2>
+        <ul>
+          <li><input type="checkbox" id="mer1" />08:00 - Lezione di Fisica</li>
+          <li>
+            <input type="checkbox" id="mer2" />Lavoro da casa o in ufficio
+          </li>
+          <li>
+            <input type="checkbox" id="mer3" />Studio serale o post-ufficio fino
+            alle 19:30/20
+          </li>
+        </ul>
+      </div>
+      <div class="day-card">
+        <h2>Giovedì</h2>
+        <ul>
+          <li><input type="checkbox" id="gio1" />08:00 - Lezione di TLC</li>
+          <li>
+            <input type="checkbox" id="gio2" />Lavoro da casa o in ufficio
+          </li>
+          <li>
+            <input type="checkbox" id="gio3" />Studio serale o post-ufficio fino
+            alle 19:30/20
+          </li>
+        </ul>
+      </div>
+      <div class="day-card">
+        <h2>Venerdì</h2>
+        <ul>
+          <li><input type="checkbox" id="ven1" />08:00 - Lezione di TLC</li>
+          <li>
+            <input type="checkbox" id="ven2" />Lavoro da casa (giornata più
+            leggera)
+          </li>
+          <li>
+            <input type="checkbox" id="ven3" />20:30/21:00 - Palestra serale
+          </li>
+        </ul>
+      </div>
+      <div class="day-card">
+        <h2>Sabato</h2>
+        <ul>
+          <li>
+            <input type="checkbox" id="sab1" />Palestra mattina (flessibile)
+          </li>
+          <li><input type="checkbox" id="sab2" />Pomeriggio in biblioteca</li>
+          <li><input type="checkbox" id="sab3" />Sera - Lavoro sulla tesi</li>
+        </ul>
+      </div>
+      <div class="day-card">
+        <h2>Domenica</h2>
+        <ul>
+          <li>
+            <input type="checkbox" id="dom1" />Palestra mattina (flessibile)
+          </li>
+          <li>
+            <input type="checkbox" id="dom2" />Pomeriggio - Recupero o ripasso
+            leggero
+          </li>
+          <li><input type="checkbox" id="dom3" />Sera - Lavoro sulla tesi</li>
+        </ul>
+      </div>
+    </div>
+    <div class="note">
+      <p>
+        <strong>Nota:</strong> mantieni almeno una sera libera ogni tanto per
+        decomprimere e non saturarti.
+      </p>
+      <p>
+        <strong>Obiettivo:</strong> chiudere l’università entro Luglio senza
+        perdere equilibrio e concentrazione.
+      </p>
+    </div>
+
+    <script>
+      const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+
+      checkboxes.forEach((checkbox) => {
+        const id = checkbox.id;
+        const saved = localStorage.getItem(id);
+        if (saved) {
+          checkbox.checked = true;
+        }
+        checkbox.addEventListener("change", () => {
+          if (checkbox.checked) {
+            localStorage.setItem(id, "checked");
+          } else {
+            localStorage.removeItem(id);
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
